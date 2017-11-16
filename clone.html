@@ -1,0 +1,61 @@
+<html>
+
+<body>
+    <script>
+        //Object i have
+        var obj = {
+                address: {
+                    primary: {
+                        street: "13th main"
+                    },
+                    secondary: {
+                        street: "BTM"
+                    }
+                }
+            }
+            //assign the object in to another object and changing the property of second object leads to changing the first property of the object
+            //call by refference
+            //var obj1=obj;
+            //obj1.address.primary.street="koni";
+            //doing cloning by method
+            // function meena (obj){
+
+        //    var newObj=obj;
+        //    return newObj;
+
+        // }
+        // var newObj=meena(obj);
+
+        //  console.log(newObj.address.primary.street);
+
+
+        //manual
+        function clone(obj) {
+            var nobj = {};
+            var keys = Object.keys(obj);
+
+            console.log(keys);
+
+            for (var k in obj) {
+
+                if (obj.hasOwnProperty(k)) {
+
+                    if (typeof obj[k] !== "object") {
+                        nobj[k] = obj[k];
+                    } else {
+
+                        nobj[k] = clone(obj[k]);
+                    }
+
+                }
+            }
+            return nobj;
+
+        }
+
+        var newObject = clone(obj);
+        console.log(newObject);
+    </script>
+</body>
+
+</html>
